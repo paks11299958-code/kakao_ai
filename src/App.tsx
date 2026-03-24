@@ -83,13 +83,13 @@ export default function App() {
       console.error('실시간 데이터를 가져오는데 실패했습니다:', error);
     }
   };
-
+/*
   useEffect(() => {
     fetchLiveData();
     const interval = setInterval(fetchLiveData, 10000); // 10초마다 업데이트
     return () => clearInterval(interval);
   }, [GAS_URL]);
-
+*/
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!GAS_URL) {
@@ -112,7 +112,7 @@ export default function App() {
       setSubmitSuccess(true);
       // 폼 데이터 초기화 (password 추가)
   setFormData({ name: '', phone: '', password: '' });
-      fetchLiveData(); // 가입 후 데이터 갱신
+     // fetchLiveData(); // 가입 후 데이터 갱신
     } catch (error) {
       console.error('가입 신청 중 오류가 발생했습니다:', error);
       alert('가입 신청 중 오류가 발생했습니다. 다시 시도해주세요.');
