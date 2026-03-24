@@ -46,7 +46,7 @@ export default function App() {
   const [liveData, setLiveData] = useState(MOCK_DATA);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitSuccess, setSubmitSuccess] = useState(false);
-  const [formData, setFormData] = useState({ name: '', contact: '' });
+  const [formData, setFormData] = useState({ name: '', phone: '', password: '' });
   const [isLoginOpen, setIsLoginOpen] = useState(false);
   const [loginData, setLoginData] = useState({ phone: '', password: '' });
   const loginRef = useRef<HTMLDivElement>(null);
@@ -110,7 +110,8 @@ export default function App() {
 
       // no-cors 모드에서는 response.ok를 확인할 수 없으므로 성공으로 간주
       setSubmitSuccess(true);
-      setFormData({ name: '', contact: '' });
+      // 폼 데이터 초기화 (password 추가)
+  setFormData({ name: '', phone: '', password: '' });
       fetchLiveData(); // 가입 후 데이터 갱신
     } catch (error) {
       console.error('가입 신청 중 오류가 발생했습니다:', error);
@@ -486,17 +487,31 @@ export default function App() {
                   />
                 </div>
                 <div>
-                  <label htmlFor="contact" className="block text-sm font-bold text-slate-700">연락처 (이메일 또는 전화번호)</label>
-                  <input
-                    type="text"
-                    id="contact"
-                    required
-                    value={formData.contact}
-                    onChange={(e) => setFormData({ ...formData, contact: e.target.value })}
-                    className="mt-2 block w-full rounded-xl border border-slate-200 bg-slate-50 px-4 py-4 text-slate-900 focus:border-indigo-500 focus:bg-white focus:outline-none focus:ring-4 focus:ring-indigo-500/10 transition-all"
-                    placeholder="예: example@email.com 또는 010-0000-0000"
-                  />
-                </div>
+  <label htmlFor="phone" className="block text-sm font-bold text-slate-700">연락처</label>
+  <input
+    type="tel"
+    id="phone"
+    required
+    value={formData.phone}
+    onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+    className="mt-2 block w-full rounded-xl border border-slate-200 bg-slate-50 px-4 py-4 text-slate-900 focus:border-indigo-500 focus:bg-white focus:outline-none focus:ring-4 focus:ring-indigo-500/10 transition-all"
+    placeholder="010-0000-0000"
+  />
+</div>
+
+{/* 암호 입력 필드 추가 */}
+<div>
+  <label htmlFor="password" className="block text-sm font-bold text-slate-700">상담 확인용 암호</label>
+  <input
+    type="password"
+    id="password"
+    required
+    value={formData.password}
+    onChange={(e) => setFormData({ ...formData, password: e.target.value })}
+    className="mt-2 block w-full rounded-xl border border-slate-200 bg-slate-50 px-4 py-4 text-slate-900 focus:border-indigo-500 focus:bg-white focus:outline-none focus:ring-4 focus:ring-indigo-500/10 transition-all"
+    placeholder="암호를 입력해주세요"
+  />
+</div>
 
                 <button
                   type="submit"
