@@ -169,19 +169,24 @@ export default function App() {
                   >
                     <h3 className="text-base font-bold text-slate-900">로그인</h3>
                     <form onSubmit={handleLogin} className="mt-4 space-y-3">
-                      <div className="relative">
-                        <Phone size={16} className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400" />
-                        <input
-                          type="tel"              // 'number' 대신 'tel' 사용 (가장 중요!)
-                          inputMode="tel"         // 모바일 키패드 대응 및 문자열 취급 강화
-                          id="phone"
-                          required                                                
-                          value={formData.phone}
-                          onChange={(e) => setFormData({ ...formData, phone: e.target.value.replace(/[^0-9]/g, '') })} // 숫자만 입력되게 정제
-                          className="w-full rounded-xl border border-slate-200 bg-slate-50 py-3 pl-10 pr-4 text-sm text-slate-900 placeholder:text-slate-400 focus:border-indigo-500 focus:bg-white focus:outline-none focus:ring-2 focus:ring-indigo-500/20 transition-all"
-                          required
-                        />
-                      </div>
+                      <div>
+  <label htmlFor="phone" className="block text-sm font-bold text-slate-700">연락처</label>
+  <input
+    type="tel"               // 전화번호 타입 유지
+    inputMode="numeric"      // 모바일에서 숫자 키패드가 바로 뜨게 함
+    id="phone"
+    required
+    value={formData.phone}
+    // 🔥 아래 onChange 부분이 핵심입니다!
+    onChange={(e) => {
+      const onlyNumber = e.target.value.replace(/[^0-9]/g, ''); // 숫자가 아닌 모든 문자 제거
+      setFormData({ ...formData, phone: onlyNumber });
+    }}
+    className="mt-2 block w-full rounded-xl border border-slate-200 bg-slate-50 px-4 py-4 text-slate-900 focus:border-indigo-500 focus:bg-white focus:outline-none focus:ring-4 focus:ring-indigo-500/10 transition-all"
+    placeholder="숫자만 입력해주세요 (예: 01012345678)" // 하이픈 없이 안내하는 게 좋습니다.
+    maxLength={11}           // 최대 11자리까지만 입력 가능하게 제한
+  />
+</div>
                       <div className="relative">
                         <Lock size={16} className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400" />
                         <input
