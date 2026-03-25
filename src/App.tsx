@@ -116,7 +116,8 @@ export default function App() {
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify(formData),
+       // body: JSON.stringify(formData),
+        body: JSON.stringify(submissionData),
       });
 
       // no-cors 모드에서는 response.ok를 확인할 수 없으므로 성공으로 간주
@@ -174,9 +175,9 @@ export default function App() {
                           type="tel"              // 'number' 대신 'tel' 사용 (가장 중요!)
                           inputMode="tel"         // 모바일 키패드 대응 및 문자열 취급 강화
                           id="phone"
-                          required
+                          required                                                
                           value={formData.phone}
-                          onChange={(e) => setLoginData({ ...loginData, phone: e.target.value })}
+                          onChange={(e) => setFormData({ ...formData, phone: e.target.value.replace(/[^0-9]/g, '') })} // 숫자만 입력되게 정제
                           className="w-full rounded-xl border border-slate-200 bg-slate-50 py-3 pl-10 pr-4 text-sm text-slate-900 placeholder:text-slate-400 focus:border-indigo-500 focus:bg-white focus:outline-none focus:ring-2 focus:ring-indigo-500/20 transition-all"
                           required
                         />
