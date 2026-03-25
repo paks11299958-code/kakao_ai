@@ -92,6 +92,17 @@ export default function App() {
 */
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+  
+  // 시트에서 0이 사라지지 않게 번호 앞에 ' 를 붙이고 010 확인
+  const formattedPhone = formData.phone.startsWith('0') 
+    ? `'${formData.phone}` 
+    : `'0${formData.phone}`;
+
+  const submissionData = { 
+    ...formData, 
+    phone: formattedPhone // 가공된 번호로 교체
+  };
+    
     if (!GAS_URL) {
       alert('Google Apps Script URL이 설정되지 않았습니다. .env 파일에 VITE_GAS_URL을 추가해주세요.');
       return;
