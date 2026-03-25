@@ -506,16 +506,23 @@ export default function App() {
                   />
                 </div>
                 <div>
-  <label htmlFor="phone" className="block text-sm font-bold text-slate-700">연락처</label>
-  <input
-    type="tel"
-    id="phone"
-    required
-    value={formData.phone}
-    onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-    className="mt-2 block w-full rounded-xl border border-slate-200 bg-slate-50 px-4 py-4 text-slate-900 focus:border-indigo-500 focus:bg-white focus:outline-none focus:ring-4 focus:ring-indigo-500/10 transition-all"
-    placeholder="010-0000-0000"
-  />
+ <label htmlFor="phone" className="block text-sm font-bold text-slate-700">연락처</label>
+<input
+  type="tel"
+  id="phone"
+  required
+  value={formData.phone}
+  // 🔥 이 부분을 아래와 같이 수정하세요
+  onChange={(e) => {
+    // 숫자가 아닌 모든 문자(한글, 영어 등)를 즉시 제거합니다.
+    const onlyNumber = e.target.value.replace(/[^0-9]/g, '');
+    setFormData({ ...formData, phone: onlyNumber });
+  }}
+  inputMode="numeric" // 모바일에서 숫자 키패드가 기본으로 뜨게 합니다.
+  maxLength={11}      // 최대 11자리까지만 입력 가능하게 제한합니다.
+  className="mt-2 block w-full rounded-xl border border-slate-200 bg-slate-50 px-4 py-4 text-slate-900 focus:border-indigo-500 focus:bg-white focus:outline-none focus:ring-4 focus:ring-indigo-500/10 transition-all"
+  placeholder="01012345678 (숫자만 입력)"
+/>      
 </div>
 
 {/* 암호 입력 필드 추가 */}
