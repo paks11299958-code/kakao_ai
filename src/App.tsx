@@ -291,20 +291,34 @@ export default function App() {
                 관리자에게는 실시간 알림을, 고객에게는 완벽한 상담 경험을 제공합니다.
               </p>
               <div className="mt-12 flex flex-col items-center justify-center gap-4 sm:flex-row">
-                <a 
-                  href="#register" 
-                  className="group flex items-center gap-2 rounded-full bg-indigo-600 px-8 py-4 text-lg font-bold text-white shadow-xl shadow-indigo-200 transition-all hover:bg-indigo-700 hover:shadow-indigo-300 active:scale-95"
-                >
-                  지금 회원가입 하기
-                  <ArrowRight size={20} className="transition-transform group-hover:translate-x-1" />
-                </a>
-                <a 
-                  href="#dashboard" 
-                  className="rounded-full bg-white px-8 py-4 text-lg font-bold text-slate-600 ring-1 ring-slate-200 transition-all hover:bg-slate-50 active:scale-95"
-                >
-                  실시간 현황 보기
-                </a>
-              </div>
+  {/* 1. 지금 회원가입 하기 (기본) */}
+  <a 
+    href="#register" 
+    className="group flex items-center gap-2 rounded-full bg-indigo-600 px-8 py-4 text-lg font-bold text-white shadow-xl shadow-indigo-200 transition-all hover:bg-indigo-700 hover:shadow-indigo-300 active:scale-95"
+  >
+    지금 회원가입 하기
+    <ArrowRight size={20} className="transition-transform group-hover:translate-x-1" />
+  </a>
+
+  {/* 2. 추가된 AI상담 테스트 버튼 (카카오톡 연결) */}
+  <a 
+    href="http://pf.kakao.com/_dhMqK/chat" 
+    target="_blank" 
+    rel="noopener noreferrer"
+    className="flex items-center gap-2 rounded-full bg-emerald-500 px-8 py-4 text-lg font-bold text-white shadow-xl shadow-emerald-200 transition-all hover:bg-emerald-600 hover:shadow-emerald-300 active:scale-95"
+  >
+    <MessageSquare size={20} />
+    AI상담 테스트
+  </a>
+
+  {/* 3. 실시간 현황 보기 (기본) */}
+  <a 
+    href="#dashboard" 
+    className="rounded-full bg-white px-8 py-4 text-lg font-bold text-slate-600 ring-1 ring-slate-200 transition-all hover:bg-slate-50 active:scale-95"
+  >
+    실시간 현황 보기
+  </a>
+</div>
             </motion.div>
           </div>
         </section>
