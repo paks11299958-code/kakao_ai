@@ -301,6 +301,7 @@ export default function App() {
   </a>
 
   {/* 2. 추가된 AI상담 테스트 버튼 (카카오톡 연결) */}
+  <div className="flex flex-col items-center gap-2">
   <a 
     href="http://pf.kakao.com/_yWPlX/chat" 
     target="_blank" 
@@ -310,9 +311,11 @@ export default function App() {
     <MessageSquare size={20} />
     AI상담 테스트
   </a>
+  
   <span className="text-xs text-gray-400">
     ※ 원활한 연결을 위해 카카오 로그인이 필요할 수 있습니다.
   </span>
+  </div>
 
   {/* 3. 실시간 현황 보기 (기본) */}
   <a 
