@@ -302,7 +302,7 @@ export default function App() {
 
   {/* 2. 추가된 AI상담 테스트 버튼 (카카오톡 연결) */}
   <a 
-    href="http://pf.kakao.com/_dhMqK/chat" 
+    href="http://pf.kakao.com/_yWPlX/chat" 
     target="_blank" 
     rel="noopener noreferrer"
     className="flex items-center gap-2 rounded-full bg-emerald-500 px-8 py-4 text-lg font-bold text-white shadow-xl shadow-emerald-200 transition-all hover:bg-emerald-600 hover:shadow-emerald-300 active:scale-95"
@@ -310,6 +310,9 @@ export default function App() {
     <MessageSquare size={20} />
     AI상담 테스트
   </a>
+  <p className="text-sm text-gray-500 font-medium">
+    ※ 원활한 상담을 위해 카카오 계정 로그인이 필요합니다.
+  </p>
 
   {/* 3. 실시간 현황 보기 (기본) */}
   <a 
