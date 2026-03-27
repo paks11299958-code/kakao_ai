@@ -310,9 +310,9 @@ export default function App() {
     <MessageSquare size={20} />
     AI상담 테스트
   </a>
-  <p className="text-sm text-gray-500 font-medium">
-    ※ 원활한 상담을 위해 카카오 계정 로그인이 필요합니다.
-  </p>
+  <span className="text-xs text-gray-400">
+    ※ 원활한 연결을 위해 카카오 로그인이 필요할 수 있습니다.
+  </span>
 
   {/* 3. 실시간 현황 보기 (기본) */}
   <a 
